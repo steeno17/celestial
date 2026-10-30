@@ -1,0 +1,142 @@
+/*
+moonmap css closely follows and resembles the earth_map css and starsPage css
+for my own sake
+*/
+
+body {
+  margin: 0;
+  padding: 24px;
+  color: #eee;
+  background: #111827;
+  font-family: Iosevka NFM;
+}
+
+.site-header {
+  margin: -24px -24px 24px;
+  padding: 0 24px;
+  background: #0f172a;
+  border-bottom: 2px solid #334155;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 56px;
+}
+
+.site-nav a {
+  font-size: 32px;
+  padding: 10px 16px;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: #555454;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 
+puts the text description
+to the right of the image, and centers the
+text so that it grows outwards from
+the center 
+
+there is a way to optimize this for people with
+screens of different resolutions
+using @media but I ain't doing allat
+
+*/
+
+.moon-image {
+  font-size: 20px;
+  display: flex;
+  gap: 24px;
+}
+
+.image-and-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.moon-image img {
+  width: 500px;
+  height: auto;
+}
+
+.visualisation-shell {
+  margin-top: 32px;
+}
+
+#moon-map {
+  height: 720px;
+  margin-top: 24px;
+  border: 1px solid #4b5563;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #090909;
+}
+
+#moon-map canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* status of whether the moon rendered or not ( i elide this for now) */
+/* 
+#moon-status {
+  color: #9ca3af;
+} */
+
+.content-section {
+  margin: 48px 0 0;
+}
+
+.info-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.info-card {
+  padding: 20px;
+  border: 3px solid #4b5563;
+  border-radius: 8px;
+  background: #1f2937;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.info-card:hover {
+  border-color: #d1d5db;
+  transform: translateY(3px);
+}
+
+.info-card h3 {
+  margin-top: 0;
+  color: #d1d5db;
+}
+
+.video-title {
+  max-width: 1200px;
+  margin: 48px auto 0;
+}
+.video-embed {
+  display: block;
+  margin: 32px auto 0;
+  height: 500px;
+  width: 800px;
+}

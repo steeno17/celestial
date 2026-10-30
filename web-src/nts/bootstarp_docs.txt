@@ -1,0 +1,2 @@
+// bootstrap docs i used for the outline, hightlight color change of buttons  ( only used for links {the galileo article link in the stars page})
+-- https://getbootstrap.com/docs/4.0/components/buttons/

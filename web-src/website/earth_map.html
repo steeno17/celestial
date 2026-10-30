@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Earth Map</title>
+    <script src="../../d3-library/topojson.min.js"></script>
+
+    <!-- load the vendored globe.gl browser bundle -->
+    <script src="../vendor/globe.gl/globe.gl.min.js"></script>
+
+    <!-- also use the bootstrap css ( loaded before the page specific css ) -->
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/earth_map.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="./starsPage.html">Stars Map</a>
+        <a href="./earth_map.html" aria-current="page">Earth Map</a>
+        <a href="./moonPage.html">Moon Map</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Curious About Earth?</h1>
+      <p>Explore our planet:</p>
+      <div id="earth-map"></div>
+
+      <section class="content-section">
+        <h2 id="earth-heading">
+          Relatively interesting facts about our planet:
+        </h2>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>Earth's mass</h3>
+            <p>
+              About 71% of the surface is water, but the oceans make up only
+              around 0.02% of Earth's total mass.
+            </p>
+            <p>
+              96.5% of Earth's water is in the oceans, 2.5% is freshwater, about
+              1% is salty water in the ground.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>"Wood Wide Web"</h3>
+            <p>
+              Trees communicate and share nutrients through underground fungal
+              networks, sometimes called the “wood wide web”.
+            </p>
+
+            <!-- another bootstrap button  (following the same configs as the stars page) -->
+            <a
+              class="btn btn-outline-light btn-sm ms-2"
+              href="https://en.wikipedia.org/wiki/Mycorrhizal_network"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Read about it</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <!-- exoplanets simialar to earth section -->
+
+      <section class="planet-section">
+        <h2 id="exo-planets-heading">Earth's similar exoplanets:</h2>
+
+        <div class="planet-grid">
+          <article class="planet-card">
+            <a
+              href="https://science.nasa.gov/exoplanet-catalog/kepler-37-c/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="../assets/Kepler37_c.jpg"
+                alt="Kepler37_c"
+                loading="lazy"
+              />
+            </a>
+            <div class="planet-card-content">
+              <h3>Kepler-37 c</h3>
+              <p>
+                Kepler-37c is an exoplanet discovered in 2013. With an orbital
+                period of 21 days.
+              </p>
+              <p>It is located 209 light-years away.</p>
+            </div>
+          </article>
+
+          <article class="planet-card">
+            <a href="https://en.wikipedia.org/wiki/Kepler-452b" target="_blank">
+              <img
+                src="../assets/Kepler452b.jpg"
+                alt="Kepler452b"
+                loading="lazy"
+              />
+            </a>
+            <div class="planet-card-content">
+              <h3>Kepler-452b</h3>
+              <p>
+                Kepler-452b (sometimes quoted to be an Earth 2.0 or Earth's
+                Cousin), is a disputed super-Earth exoplanet.
+              </p>
+            </div>
+          </article>
+
+          <article class="planet-card">
+            <a
+              href="https://en.wikipedia.org/wiki/Kepler-283_c"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="../assets/Kepler-283_c.jpg"
+                alt="Kepler-283 c"
+                loading="lazy"
+              />
+            </a>
+            <div class="planet-card-content">
+              <h3>Kepler-283 c</h3>
+              <p>
+                Kepler-283 c is an exoplanet orbiting the K-type star
+                Kepler-283, discovered by the Kepler space telescope in 2014
+              </p>
+              <p>The planet orbits its star every 93 days</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- load the globegl module script  -->
+    <script type="module" src="./earthMap.js"></script>
+  </body>
+</html>

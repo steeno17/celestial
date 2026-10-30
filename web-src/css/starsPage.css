@@ -1,0 +1,117 @@
+/* css for the general layout and the headers */
+
+body {
+  margin: 0;
+  padding: 24px;
+  color: #eee;
+  background: #111827;
+  font-family: Iosevka NFM;
+}
+
+.site-header {
+  margin: -24px -24px 24px;
+  /* how far the page titles are from the y axis edge */
+  padding: 0 24px;
+  background: #0f172a;
+  /* bottom seperator under the titles */
+  border-bottom: 2px solid #443355;
+}
+
+.site-nav {
+  /* makes it a flexible box layout, got it from here : https://www.w3schools.com/csS/css3_flexbox.asp */
+  display: flex;
+  align-items: center;
+  /* centers all the page links*/
+  justify-content: center;
+  gap: 24px;
+  min-height: 56px;
+}
+
+.site-nav a {
+  color: #cbd5e1;
+  font-size: 32px;
+  /* much smoother transitions on hover, compared */
+  /* to the blocky default one */
+  padding: 10px 16px;
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+  /* this prevents the buttons to be underlined */
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: #c77def;
+}
+
+#celestial-map {
+  width: 1200px !important;
+  display: block;
+  margin: 0 auto;
+}
+
+#celestial-map canvas {
+  display: block;
+  width: 100% !important;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid #64748b;
+  background: #050816;
+}
+
+#status {
+  margin-bottom: 12px;
+}
+
+/* centers the main header (ALSO MATCHES THE EARTH ONE) */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* CSS FOR THE ASTRONOMERS/ASTROPHYSICISTS INFO SECTION */
+.content-section {
+  max-width: 1200px;
+  margin: 48px auto 0;
+}
+
+.info-grid {
+  display: grid;
+  /* this forces them to be in a horizontal grid layout, otherwise they fit vertically and take too much space */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* makes changes to all info cards in the html file */
+.info-card {
+  padding: 25px;
+  border: 3px solid #334155;
+  /* leave this at 0 to have blocky edges */
+  background: #0f172a;
+}
+
+.info-card:hover {
+  /* change color of the info card border when hovering */
+  /*  */
+  /* and move it down the y axis for lift effect */
+  border-color: #c4b5fd;
+  transform: translateY(3px);
+}
+
+/* astonomer's header */
+.info-card h3 {
+  color: #c4b5fd;
+}
+
+.video-title {
+  max-width: 1200px;
+  margin: 48px auto 0;
+}
+
+.video-embed {
+  display: block;
+  margin: 32px auto 0;
+  height: 500px;
+  width: 800px;
+}

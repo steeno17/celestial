@@ -1,0 +1,12 @@
+// how to rotate and zoom sky map 
+https://www.jasondavies.com/maps/rotate/ 
+
+// official d3 library
+https://d3js.org
+
+// geo projections
+https://github.com/d3/d3-geo-projection
+
+
+// globe gl ( renders both the moon and the earth)
+https://globe.gl/#initialisation

@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WASM Star Map</title>
+
+    <!-- IMPORTING d3-celestial library and api -->
+    <script type="text/javascript" src="../../d3-library/d3.min.js"></script>
+
+    <script
+      type="text/javascript"
+      src="../../d3-library/d3.geo.projection.min.js"
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="../../d3-renderer/celestial.min.js"
+    ></script>
+
+    <link rel="stylesheet" href="../../d3-renderer/celestial.css" />
+
+    <!-- bootstrap 5.3.2 css link taken from jsdelivr = link : https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.css -->
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+
+    <!-- link to the stylesheet for the canvas and the header -->
+    <!-- my own css file for this page is defined AFTER the bootstrap, so it can be overwritten -->
+    <!-- basically bootstrap loads, then my file loads -->
+    <link rel="stylesheet" href="../css/starsPage.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="site-nav">
+        <!-- href links to my other pages -->
+        <a href="./starsPage.html" aria-current="page">Stars Map</a>
+        <a href="./earth_map.html">Earth Map</a>
+        <a href="./moonPage.html">Moon Map</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Constellations and Star Map</h1>
+      <p class="lead">Explore the names of some stars and constellations:</p>
+      <div style="overflow: hidden"><div id="celestial-map"></div></div>
+      <div id="celestial-form"></div>
+
+      <section class="content-section" aria-labelledby="astronomers-heading">
+        <h2 id="astronomers-heading">
+          Some of my favourite astronomers/astrophysicists, and their
+          contributions to astronomy:
+        </h2>
+        <p>
+          Throughout history, a bunch of people have made tremendous
+          contributions, even despite obstacles like The Church, who were
+          harshly against any "blasphemous" ideas or attempts to challenge the
+          religious consensus of the time.
+        </p>
+        <p>
+          An extensive article on the conflict between Galileo and the Catholic
+          Church is a great example:
+          <!-- link to an external site, an article regarding galileo and his dispute -->
+          <!-- bootstrap button -->
+          <!--         -->
+          <!-- target blank opens the link in a new tab -->
+          <a
+            class="btn btn-outline-light btn-sm ms-2"
+            href="https://newsroom.ucla.edu/releases/the-truth-about-galileo-and-his-conflict-with-the-catholic-church"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read the Galileo article
+          </a>
+        </p>
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>Galileo Galilei</h3>
+            <p>
+              Galileo used the telescope to observe mountains on the Moon, the
+              phases of Venus, and the moons orbiting Jupiter.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Johannes Kepler</h3>
+            <p>
+              Kepler used Tycho Brahe's observations to establish that planets
+              travel in elliptical orbits rather than perfect circles. Best
+              known for his three laws of planetary motion.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Nicolaus Copernicus</h3>
+            <p>
+              Copernicus proposed the heliocentric model of the solar system,
+              placing sun at the center of the universe, as oppose to the Earth.
+              This was one of the major challenges against the church's
+              geocentric belief, which was deemed infalliable.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Edwin Hubble</h3>
+            <p>
+              Hubble showed that Andromeda is a separate galaxy and provided
+              evidence that the universe is expanding.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="video-title">
+        <h3>
+          How Kepler deduced Earth's orbit, explained by Tao ( and the narrator
+          3Blue1Brown ):
+        </h3>
+      </section>
+
+      <!-- EMBED A YOUTUBE VIDEO USING YOUTUBE'S "EMBED" LINK ( USING A NORMAL LINK WON'T WORK WITH iframe ) -->
+      <!-- doc: https://www.w3schools.com/html/html_youtube.asp -->
+      <!-- youtube.com/embed is used for embedding  -->
+      <iframe
+        class="video-embed"
+        src="https://www.youtube.com/embed/YdOXS_9_P4U?start=352"
+        title="Kepler's genius"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+      ></iframe>
+    </main>
+
+    <script type="text/javascript">
+      // CONFIGURATION FOR D3 CELESTIAL RENDERER ( choices )
+      var config = {
+        width: 0, // Default width, 0 = full parent width; height is determined by projection
+        projection: "aitoff", // Map projection used: airy, aitoff, armadillo, august, azimuthalEqualArea, azimuthalEquidistant, baker, berghaus, boggs, bonne, bromley, collignon, craig, craster, cylindricalEqualArea, cylindricalStereographic, eckert1, eckert2, eckert3, eckert4, eckert5, eckert6, eisenlohr, equirectangular, fahey, foucaut, ginzburg4, ginzburg5, ginzburg6, ginzburg8, ginzburg9, gringorten, hammer, hatano, healpix, hill, homolosine, kavrayskiy7, lagrange, larrivee, laskowski, loximuthal, mercator, miller, mollweide, mtFlatPolarParabolic, mtFlatPolarQuartic, mtFlatPolarSinusoidal, naturalEarth, nellHammer, orthographic, patterson, polyconic, rectangularPolyconic, robinson, sinusoidal, stereographic, times, twoPointEquidistant, vanDerGrinten, vanDerGrinten2, vanDerGrinten3, vanDerGrinten4, wagner4, wagner6, wagner7, wiechel, winkel3
+        projectionRatio: null, // Optional override for default projection ratio
+        transform: "equatorial", // Coordinate transformation: equatorial (default), ecliptic, galactic, supergalactic
+        center: null, // Initial center coordinates in equatorial transformation [hours, degrees, degrees],
+        // otherwise [degrees, degrees, degrees], 3rd parameter is orientation, null = default center
+        orientationfixed: true, // Keep orientation angle the same as center[2]
+        background: { fill: "#000000", stroke: "#000000", opacity: 1 }, // Background style
+        adaptable: true, // Sizes are increased with higher zoom-levels
+        interactive: true, // Enable zooming and rotation with mousewheel and dragging
+        disableAnimations: false, // Disable all animations
+        form: false, // Display settings form
+        location: false, // Display location settings
+        controls: true, // Display zoom controls
+        lang: "", // Language for names, so far only for constellations: de: german, es: spanish
+        // Default:en or empty string for english
+        container: "celestial-map", // ID of parent element, e.g. div
+        datapath: "../../data/", // Path/URL to data files, empty = subfolder 'data'
+        stars: {
+          show: true, // Show stars
+          limit: 6, // Show only stars brighter than limit magnitude
+          colors: true, // Show stars in spectral colors, if not use "color"
+          style: { fill: "#ffffff", opacity: 1 }, // Default style for stars
+          names: true, // Show star names (Bayer, Flamsteed, Variable star, Gliese, whichever applies first)
+          proper: true, // Show proper name (if present)
+          desig: false, // Show all names, including Draper and Hipparcos
+          namelimit: 2.5, // Show only names for stars brighter than namelimit
+          namestyle: {
+            fill: "#ddddbb",
+            font: "11px Georgia, Times, 'Times Roman', serif",
+            align: "left",
+            baseline: "top",
+          },
+          propernamestyle: {
+            fill: "#ddddbb",
+            font: "11px Georgia, Times, 'Times Roman', serif",
+            align: "right",
+            baseline: "bottom",
+          },
+          propernamelimit: 1.5, // Show proper names for stars brighter than propernamelimit
+          size: 7, // Maximum size (radius) of star circle in pixels
+          exponent: -0.28, // Scale exponent for star size, larger = more linear
+          data: "stars.6.json", // Data source for stellar data
+          // data: "stars.8.json", // Alternative deeper data source for stellar data
+          // data: "stars.14.json",
+        },
+        dsos: {
+          show: true, // Show Deep Space Objects
+          limit: 6, // Show only DSOs brighter than limit magnitude
+          names: true, // Show DSO names
+          desig: true, // Show short DSO names
+          namelimit: 4, // Show only names for DSOs brighter than namelimit
+          namestyle: {
+            fill: "#cccccc",
+            font: "11px Helvetica, Arial, serif",
+            align: "left",
+            baseline: "top",
+          },
+          size: null, // Optional seperate scale size for DSOs, null = stars.size
+          exponent: 1.4, // Scale exponent for DSO size, larger = more non-linear
+          data: "dsos.bright.json", // Data source for DSOs
+          // data: "dsos.6.json", // Alternative broader data source for DSOs
+          //data: 'dsos.14.json' // Alternative deeper data source for DSOs
+          symbols: {
+            //DSO symbol styles
+            gg: { shape: "circle", fill: "#ff0000" }, // Galaxy cluster
+            g: { shape: "ellipse", fill: "#ff0000" }, // Generic galaxy
+            s: { shape: "ellipse", fill: "#ff0000" }, // Spiral galaxy
+            s0: { shape: "ellipse", fill: "#ff0000" }, // Lenticular galaxy
+            sd: { shape: "ellipse", fill: "#ff0000" }, // Dwarf galaxy
+            e: { shape: "ellipse", fill: "#ff0000" }, // Elliptical galaxy
+            i: { shape: "ellipse", fill: "#ff0000" }, // Irregular galaxy
+            oc: {
+              shape: "circle",
+              fill: "#ffcc00",
+              stroke: "#ffcc00",
+              width: 1.5,
+            }, // Open cluster
+            gc: { shape: "circle", fill: "#ff9900" }, // Globular cluster
+            en: { shape: "square", fill: "#ff00cc" }, // Emission nebula
+            bn: {
+              shape: "square",
+              fill: "#ff00cc",
+              stroke: "#ff00cc",
+              width: 2,
+            }, // Generic bright nebula
+            sfr: {
+              shape: "square",
+              fill: "#cc00ff",
+              stroke: "#cc00ff",
+              width: 2,
+            }, // Star forming region
+            rn: { shape: "square", fill: "#00ooff" }, // Reflection nebula
+            pn: { shape: "diamond", fill: "#00cccc" }, // Planetary nebula
+            snr: { shape: "diamond", fill: "#ff00cc" }, // Supernova remnant
+            dn: {
+              shape: "square",
+              fill: "#999999",
+              stroke: "#999999",
+              width: 2,
+            }, // Dark nebula grey
+            pos: {
+              shape: "marker",
+              fill: "#cccccc",
+              stroke: "#cccccc",
+              width: 1.5,
+            }, // Generic marker
+          },
+        },
+        constellations: {
+          show: true, // Show constellations
+          names: true, // Show constellation names
+          desig: true, // Show short constellation names (3 letter designations)
+          namestyle: {
+            fill: "#cccc99",
+            align: "center",
+            baseline: "middle",
+            opacity: 0.8,
+            font: [
+              "bold 14px Helvetica, Arial, sans-serif", // Different fonts for brighter &
+              "bold 12px Helvetica, Arial, sans-serif", // sdarker constellations
+              "bold 11px Helvetica, Arial, sans-serif",
+            ],
+          },
+          lines: true, // Show constellation lines
+          linestyle: { stroke: "#cccccc", width: 1, opacity: 0.6 },
+          bounds: false, // Show constellation boundaries
+          boundstyle: {
+            stroke: "#cccc00",
+            width: 0.5,
+            opacity: 0.8,
+            dash: [2, 4],
+          },
+        },
+        mw: {
+          show: true, // Show Milky Way as filled polygons
+          style: { fill: "#6c63ff", opacity: "0.2" },
+        },
+        lines: {
+          graticule: {
+            show: true,
+            stroke: "#cccccc",
+            width: 0.6,
+            opacity: 0.8, // Show graticule lines
+            // grid values: "outline", "center", or [lat,...] specific position
+            lon: {
+              pos: ["center"],
+              fill: "#eee",
+              font: "10px Helvetica, Arial, sans-serif",
+            },
+            // grid values: "outline", "center", or [lon,...] specific position
+            lat: {
+              pos: ["center"],
+              fill: "#eee",
+              font: "10px Helvetica, Arial, sans-serif",
+            },
+          },
+          equatorial: {
+            show: true,
+            stroke: "#aaaaaa",
+            width: 1.3,
+            opacity: 0.7,
+          }, // Show equatorial plane
+          ecliptic: { show: true, stroke: "#66cc66", width: 1.3, opacity: 0.7 }, // Show ecliptic plane
+          galactic: {
+            show: false,
+            stroke: "#cc6666",
+            width: 1.3,
+            opacity: 0.7,
+          }, // Show galactic plane
+          supergalactic: {
+            show: false,
+            stroke: "#cc66cc",
+            width: 1.3,
+            opacity: 0.7,
+          }, // Show supergalactic plane
+          //
+          //
+          //
+          // RENDER SELECTED PLANETS
+        },
+        planets: {
+          show: true,
+          which: [
+            "sol",
+            "mer",
+            "ven",
+            "lun",
+            "mar",
+            "jup",
+            "sat",
+            "ura",
+            "nep",
+            "plu",
+          ],
+          symbolType: "symbol",
+          names: true,
+          namesType: "en",
+          symbolStyle: {
+            fill: "#ffffff",
+            opacity: 1,
+            font: "bold 20px Arial",
+            align: "center",
+            baseline: "middle",
+          },
+          nameStyle: {
+            fill: "#ffffff",
+            font: "12px Arial",
+            align: "left",
+            baseline: "top",
+          },
+        },
+      };
+
+      // run the config for d3
+      Celestial.display(config);
+    </script>
+  </body>
+</html>

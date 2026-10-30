@@ -1,0 +1,19 @@
+BasedOnStyle: WebKit
+IndentWidth: 4
+TabWidth: 4
+AccessModifierOffset: -4
+UseTab: Never
+BreakBeforeBraces: Attach
+SortIncludes: Never
+IncludeBlocks: Preserve
+AlignAfterOpenBracket: false
+BreakConstructorInitializers: BeforeComma
+NamespaceIndentation: All
+IndentCaseLabels: true
+
+# BasedOnStyle: GNU
+# IndentWidth: 2
+# TabWidth: 8
+# UseTab: Always
+# ColumnLimit: 100
+# BreakBeforeBraces: GNU

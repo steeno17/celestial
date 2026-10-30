@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Moon</title>
+    <!-- load the vendored globe.gl browser bundle -->
+    <script src="../vendor/globe.gl/globe.gl.min.js"></script>
+    <!-- load bootstrap first before site specific css -->
+    <link rel="stylesheet" href="../css/bootstrap.css" />
+    <!-- site specific css -->
+    <link rel="stylesheet" href="../css/moon_map.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="site-nav">
+        <a href="./starsPage.html">Stars Map</a>
+        <a href="./earth_map.html">Earth Map</a>
+        <a href="./moonPage.html" aria-current="page">Moon Map</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>How we can infer Earth's shape, by simply using the Moon:</h1>
+
+      <section class="moon-image">
+        <!-- section to talk about how we know for sure
+        that the earth is round without using
+        anything other than the moon -->
+        <a
+          href="https://www.reddit.com/r/astrophotography/comments/yil0tu/partial_lunar_eclipse_composite/"
+          target="_blank"
+        >
+          <img
+            src="../assets/partial-lunar-eclipse-composite-v0-zrusyjhpt6x91.webp"
+            alt="Lunar eclipse motion"
+            loading="lazy"
+          />
+        </a>
+
+        <!-- i made a seperate class here so that I could
+        have the second image go beneath the paragraph as oppose to stacking them -->
+
+        <div class="image-and-text">
+          <!-- text will appear to the right of the image -->
+          <p>
+            Several images of the Moon being taken, entering and exitting a
+            solar eclipse, can infer the shape of the Earth. They can also let
+            you grasp the relative size of the Earth in comparison to the moon.
+            <br />
+            <br />
+            The shape of the Earth can be inferred directly from the shape of
+            the shadow it throws on the moon during an eclipse. By observing
+            this shadow, we can rule out other shapes such as triangular, square
+            or hexagonal. Thus, direct observation tells us that the earth is a
+            sphere and consequently that the globe is a good representation of
+            the way the Earth actually is.
+          </p>
+
+          <img
+            src="../assets/moon-motion.webp"
+            alt=" Moon motion"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <section class="visualisation-shell">
+        <h2 id="moon-map-heading">Lunar Map</h2>
+        <div id="moon-map"></div>
+      </section>
+
+      <section class="content-section">
+        <h2 id="moon-heading">How did we derive Moon's orbit ?</h2>
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>Hipparchus (c. 190-120 BC)</h3>
+            <p>
+              He measured the Moon's motion using Babylonian eclipse records
+              alongside his own observations. He found that the Moon's path is
+              tilted about 5° to the ecliptic, and that it moves at uneven
+              speeds.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Johannes Kepler (1571-1630)</h3>
+            <p>
+              Kepler showed that orbits are ellipses, not circles. Applied to
+              the Moon, this explained why its distance and apparent speed vary
+              through the month
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Isaac Newton (1643-1727)</h3>
+            <p>
+              Newton explained why the Moon orbits. He tested whether the force
+              keeping the Moon in orbit is the same gravity that makes an apple
+              fall,
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="video-title">
+        <h3>Brian Cox's "Wonders of The Universe documentary":</h3>
+
+        <!-- the moon page is COMPARABLY slower than the 
+        stars page in loading the youtube embded, simply
+        because it does much more work loading globegl than the d3
+        renderer does-->
+
+        <iframe
+          class="video-embed"
+          src="https://youtube.com/embed/6gLDC9_bLb4?si=ZxQzhAiTXSnmauIP"
+          title="Brian Cox's documentary"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+        ></iframe>
+      </section>
+    </main>
+
+    <!-- load globegl renderer module -->
+    <script type="module" src="./moonMap.js"></script>
+  </body>
+</html>

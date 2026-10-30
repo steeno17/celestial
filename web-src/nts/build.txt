@@ -1,0 +1,41 @@
+emcc src/sky.cpp -O0 -o build/sky.js \
+  -sMODULARIZE=1 \
+  -sEXPORT_ES6=1 \
+  -sEXPORTED_FUNCTIONS='["_project_stars","_malloc","_free"]' \
+  -sEXPORTED_RUNTIME_METHODS='["ccall","HEAPF64"]'
+
+
+  -sEXPORTED_FUNCTIONS= _project_stars, _malloc, _free // without a list also works ( modern implementation)
+
+  -00 flag means no compiler optimizations ( like -02 -03 )
+  the rest of the flags take
+
+
+  -SMODULARIZE flag set to 1 ( or true basically ) means that we don't make 1 default instance of the
+  emscripten module object, but it becomes callable so we can have multiple instances
+
+  EXPORTED_FUNCTIONS flag stops emscripten from removing the functions in that list
+  _project_stars ( prefix comes from emscripten naming convention, my function is actually called )
+  project_stars, we also want to keep malloc and free sys calls
+
+  S.O. post on exporting functions : https://stackoverflow.com/questions/33190760/export-all-functions-with-emscripten
+
+
+  if i come across this Error: Aborted('HEAPF64' was not exported.
+  add it to EXPORTED_RUNTIME_METHODS -------- then
+  the browser cache is cooking me from the previous failed compilations
+  just do a hard reset ctrlshiftR and it should fix
+
+  we explicitly export the cpp calculation function, malloc and free so that we can
+  "pseudoallocate" memory from within app.js
+
+
+  by default emscripten uses Modules so that js can call the cpp methods
+
+    // ./sky.js  and sky.wasm should be the outputs of emscripten
+----
+standard method to CREATE EMSCRIPTEN MODULE
+    const createModule = require("./output.js");
+    const module = await createModule();
+    module._myFunction();
+

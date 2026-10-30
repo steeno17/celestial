@@ -1,0 +1,5 @@
+https://www.jsdelivr.com // open source 
+
+// where i fetched some assets
+// also contains scripts for day/night cycling etc
+https://cdn.jsdelivr.net/npm/three-globe/example/

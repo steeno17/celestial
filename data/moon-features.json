@@ -1,0 +1,57 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "tycho",
+      "properties": {
+        "name": "Tycho crater",
+        "kind": "crater",
+        "description": "A prominent young crater in the Moon's southern highlands."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-11.1, -43.3]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "copernicus",
+      "properties": {
+        "name": "Copernicus crater",
+        "kind": "crater",
+        "description": "A large impact crater on the lunar near side."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-20.1, 9.6]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo11",
+      "properties": {
+        "name": "Apollo 11 landing site",
+        "kind": "landing site",
+        "description": "The first crewed landing site, in Mare Tranquillitatis."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [23.5, 0.7]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "apollo17",
+      "properties": {
+        "name": "Apollo 17 landing site",
+        "kind": "landing site",
+        "description": "The final crewed Apollo landing site, near Taurus-Littrow."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [30.8, 20.2]
+      }
+    }
+  ]
+}

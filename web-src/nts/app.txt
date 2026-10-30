@@ -1,0 +1,71 @@
+// notes for me:
+the webassembly module object has one big block of memory ( linear memory ), which is implemented
+as an array buffer
+
+javascrip can't directly access memory, so emscripten creates typed arrays in 
+sizes of: HEAPU8, HEAP32, HEAPF32, HEAPF64 ( f denoting floating point, u = unsigned int),
+over the actual underlying heap buffer ( kind of like a handle access to it )
+
+typed array points are indexed by the elements, but pointers are a byte offset of some X ( x : element size in bytes )
+
+a double in C++ is 8 bytes, so somePointer / 8 would give the index to access, hence why I used raPtr / elementsPerNumber
+
+
+I vendored the globegl library instead of fetching it online, to keep everything local and not worry about dependancies
+-- so instead of fetching it with a script tag, i just directly load the library from /vendor (../vendor/globe.gl/globe.gl.min.js)
+
+
+          GENERAL COLOR THEMES & FONT CONSISTENCY:
+background: #111827
+text color: #eee
+Iosevka NFM font
+
+GEOJSON format for the /data directory:
+{
+  "type": "Feature",
+  "properties": {
+    "mag": 5.71, // magnitude
+    "bv": "0.911"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [0.2691, -48.8099]
+  }
+}
+
+
+stars.6.json — stars down to magnitude 6
+stars.8.json / stars.14.json — increasingly dense star catalogues (gets much harder to render on my laptop)
+starnames.json — star names
+constellations.json — constellation names and boundaries
+constellations.lines.json — lines connecting stars into constellations
+asterisms.json — unofficial patterns such as the Big Dipper
+messier.json — Messier deep-sky objects
+dsos.bright.json, dsos.6.json, dsos.14.json — deep-space objects
+milkyway.json / mw.json — Milky Way data
+planets.json — planet positions/data
+dsonames.json — deep-space object names ( existing satellites, identified debris etc..)
+
+
+
+
+GLOBE GL LIBRARY TO RENDER THE EARTH:
+// what the globe.gl library does for me :
+Scene creation
+Camera setup
+WebGL rendering
+Lighting
+Earth geometry
+Mouse interaction
+Camera movement
+
+I COULD add custom 3d objects, or my own arbitrary satellites around the earth
+but the library itself completes the job well itself
+
+
+the countries-110m.json from /data that came from the d3 library to render the stars, isnt actually
+that accurate if i was trying to make a serious project, but if i wanted more accurate boundaries a big
+tradeoff would be rendering and just having more detail might just slow the website down for people with trash
+laptops like me ( so optimization in that sense is a consideration for me - but also can be a 
+positive, because my laptop isn't amazingly fast, i kind of HAVE to think about optimization choices, 
+and not only does it make it more accessible to the average person but also keeps you conscious of decisions)

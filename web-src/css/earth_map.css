@@ -1,0 +1,153 @@
+body {
+  /* how far down from the top edge of page */
+  margin: 0;
+  /* x axis padding */
+  padding: 24px;
+  color: #eee;
+  background: #111827;
+  font-family: Iosevka NFM;
+}
+
+.site-header {
+  margin: -24px -24px 24px;
+  padding: 0 24px;
+  background: #0f172a;
+  border-bottom: 2px solid #154587;
+}
+
+.site-nav {
+  /* makes them all sequential in FLEXIBLE order as per the css doc */
+  display: flex;
+  align-items: center;
+  /* centers all the page links */
+  justify-content: center;
+  gap: 24px;
+  min-height: 56px;
+}
+
+.site-nav a {
+  color: #cbd5e1;
+  font-size: 32px;
+  /*
+  much smoother hovering transition
+  visibily better
+  */
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+  /* prevents button from getting underlined */
+  text-decoration: none;
+
+  /* decent spacing between each button */
+  padding: 10px 16px;
+}
+
+/* change color, respective to the current page that the user is on(basically blue for earth, purple for stars grey for moon) */
+/* aria-current also makes the current page that they are on match the hover color */
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: #0d72f6;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* the container that the globe gl renderer uses */
+#earth-map {
+  height: 720px;
+  margin-top: 24px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #07152e;
+}
+
+/* the canvas for globe gl ( a child of #earth-map ) */
+#earth-map canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.content-section {
+  margin: 48px 0 0;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.info-card {
+  padding: 20px;
+  border: 3px solid #334155;
+  border-radius: 8px;
+  background: #0f172a;
+}
+
+.info-card:hover {
+  border-color: #0d72f6;
+  transform: translateY(3px);
+}
+
+.info-card h3 {
+  color: #7dd3fc;
+}
+
+.planet-section {
+  margin: 48px 0 0;
+}
+
+.planet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.planet-card {
+  overflow: hidden;
+  border: 3px solid #334155;
+  border-radius: 8px;
+  background: #0f172a;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.planet-card:hover {
+  border-color: #0d72f6;
+  transform: translateY(3px);
+}
+
+.planet-card a {
+  display: block;
+}
+
+.planet-card img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: filter 180ms ease;
+}
+
+/*
+when the planet card is hovered over
+the brightness increases 20%
+*/
+.planet-card a:hover img,
+.planet-card a:focus-visible img {
+  filter: brightness(1.2);
+}
+
+.planet-card-content {
+  padding: 20px;
+}
+
+.planet-card h3 {
+  margin-top: 0;
+  color: #7dd3fc;
+}
