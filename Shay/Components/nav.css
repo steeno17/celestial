@@ -1,0 +1,32 @@
+body {
+  background: #020202;
+  min-height: 300vh;         
+  font-family: 'Orbitron', sans-serif;
+}
+
+
+.navbar {
+  --bs-navbar-color: #fff;
+  --bs-navbar-hover-color: #fff;
+  --bs-navbar-brand-color: #fff;
+  --bs-navbar-brand-hover-color: #fff;
+}
+
+.navbar-brand {
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.nav-link {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  opacity: 0.65;
+  transition: opacity 0.2s;
+}
+.nav-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.nav-side { flex: 1 1 0; }

@@ -1,0 +1,67 @@
+.Artist backgroundImage {
+    opacity: 0.3;
+}
+
+.artist-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px; 
+    background: #ffffff;
+    opacity: 0.5;
+    color: #010047;
+    border-radius: 24px; 
+    padding: 30px;
+    margin: 15px 10px;
+    min-height: 200px; 
+    box-shadow: 0 10px 30px rgba(104, 2, 2, 0.05); 
+    transition: transform 0.6s ease, box-shadow 0.3s ease; 
+}
+
+/* Dynamic Hover Effect */
+.artist-card:hover {
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow: 0 15px 35px rgba(104, 2, 2, 0.12);
+    opacity: 0.8;
+}
+
+.artist-card .artist-image {
+    flex-shrink: 0; 
+    width: 120px; 
+    height: 120px;
+}
+
+.artist-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 50%;
+    border: 3px solid #68020200;
+    transition: transform 0.7s ease;
+}
+
+
+.artist-card:hover .artist-image img {
+    transform: scale(1.05) ;
+}
+
+.artist-card .artist-info {
+    flex: 1;
+    text-align: right; 
+}
+
+.artist-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.4rem; 
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+
+.artist-card .artist-info p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.8;
+    line-height: 1.5;
+}

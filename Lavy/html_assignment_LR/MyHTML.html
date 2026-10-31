@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- tab title -->
+    <title>Gustav Holst</title>
+    <link
+      rel="stylesheet"
+      href="../../../Iso/celestial-main/web-src/css/bootstrap.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- loop the song continously -->
+    <audio id="backgroundAudio" loop>
+      <source src="music/background_music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- takes it back to Shay's landing page -->
+    <header class="site-header">
+      <a class="wordmark" href="../../Shay/web-src/sun.html">
+        <span>Home Page</span>
+      </a>
+
+      <!-- play music button -->
+      <!-- aria-pressed="true" plays it by default -->
+      <button
+        class="audio-toggle"
+        id="audioToggle"
+        type="button"
+        aria-pressed="false"
+      >
+        <span class="audio-dot" aria-hidden="true"></span>
+        Play atmosphere
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Gustav<br /><em>Holst</em></h1>
+          <a
+            class="btn btn-outline-light btn-sm ms-2"
+            href="https://en.wikipedia.org/wiki/Gustav_Holst"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Explore his story</a
+          >
+        </div>
+        <div class="hero-art">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="hero-portrait">
+            <img
+              src="images/GustavHolstImage.jpg"
+              alt="Portrait of Gustav Holst"
+            />
+          </div>
+          <span class="planet planet-large"></span>
+          <span class="planet planet-small"></span>
+        </div>
+      </section>
+
+      <section class="story section-grid" id="story">
+        <div>
+          <h2>Music with<br /><em>gravity.</em></h2>
+        </div>
+
+        <div class="story-copy">
+          <p class="lead">
+            Gustav Holst was an English composer, arranger and teacher whose
+            curiosity reached far beyond the concert hall.
+          </p>
+
+          <p>
+            Inspired by astrology, Sanskrit texts and English folk song, he
+            shaped music that feels both ancient and otherworldly. His
+            best-known work, <strong>The Planets</strong>, gives each celestial
+            body its own character—from Mars's relentless force to Neptune's
+            vanishing horizon.
+          </p>
+
+          <p>
+            That suite made Holst one of astronomy's most memorable musical
+            interpreters, influencing generations of film composers and
+            science-fiction soundscapes.
+          </p>
+        </div>
+      </section>
+
+      <section class="planets-feature">
+        <div class="feature-heading">
+          <h2><em>The Planets</em></h2>
+          <p>
+            A suite in seven movements, written as a series of shifting moods
+            rather than a literal tour of the solar system.
+          </p>
+        </div>
+
+        <div class="planet-list">
+          <article>
+            <span class="planet-number">I</span
+            ><span><strong>Mars</strong><small>Bringer of War</small></span>
+          </article>
+          <article>
+            <span class="planet-number">II</span
+            ><span><strong>Venus</strong><small>Bringer of Peace</small></span>
+          </article>
+          <article>
+            <span class="planet-number">III</span>
+            <span>
+              <strong>Mercury</strong><small>Winged Messenger</small>
+            </span>
+          </article>
+          <article>
+            <span class="planet-number">IV</span>
+            <span
+              ><strong>Jupiter</strong><small>Bringer of Jollity</small>
+            </span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="./javascript.js"></script>
+  </body>
+</html>

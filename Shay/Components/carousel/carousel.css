@@ -1,0 +1,87 @@
+.carousel-container {
+  width: 100%;
+  overflow: hidden;            
+  padding: 20px 0;
+  margin: 40px 0;
+  background: #bbaaec00;     
+    box-shadow: 0 -8px 12px -4px rgba(0, 0, 0, 0.2);  
+}
+
+carousel-container ::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px; /* Adjust width to control depth size */
+  height: 100%;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+carousel-container ::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px; /* Adjust width to control depth size */
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;           
+  animation: marquee 40s linear infinite;
+}
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.tile {
+  flex: 0 0 260px;               
+  min-height: 100px;
+  margin: 0 10px;                
+  padding: 22px 24px;
+  background: #00000000;
+  color: #000000;
+  border-radius: 20px;
+}
+
+.tile h3 {
+  margin: 0 0 14px;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+}
+
+.tile img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;             
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+
+/* grid layout for the planets without a carousel */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.cards .tile {
+  flex: none;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { animation: none; }
+  .carousel-container { overflow-x: auto; }
+}

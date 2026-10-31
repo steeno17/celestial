@@ -1,0 +1,32 @@
+:root {
+  --nav-h: 56px;
+}
+
+.rail {
+  position: fixed;
+  top: var(--nav-h);
+  left: 24px;
+  display: flex;
+  flex-direction: column;  
+  gap: 10px;
+  padding-top: 18px;
+  z-index: 10;
+}
+
+.rail-link {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.65;
+  transition: opacity 0.2s;
+}
+
+.rail-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+.rail-link.active {
+  opacity: 1;
+}

@@ -1,0 +1,211 @@
+/* font as a .ttf in assets */
+@font-face {
+  font-family: Iosevka;
+  src: url("assets/IosevkaNerdFontPropo-Italic.ttf") format("truetype");
+  font-style: italic;
+  font-display: swap;
+}
+
+/* colors to be reused across this css file */
+:root {
+  --bg: #101113;
+  --panel: #18191b;
+  --text: #e9e7df;
+  --muted: #9c9b95;
+  --line: #3a3a3a;
+  --gold: #d7a85d;
+  --violet: #9e8cc5;
+  --bright_purple: #5100ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font:
+    1.05rem/1.7 Georgia,
+    serif;
+  margin: 0;
+}
+
+.site-header,
+.audio-toggle,
+.text-link {
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.site-header {
+  gap: 1.5rem;
+}
+
+.wordmark,
+.audio-toggle {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--text);
+  cursor: pointer;
+  display: inline-block;
+  font: 0.95rem Arial, sans-serif;
+  padding: 0.75rem 1.1rem;
+}
+
+.wordmark:hover,
+.audio-toggle:hover {
+  border-color: var(--gold);
+}
+
+.audio-dot {
+  background: var(--muted);
+  border-radius: 50%;
+  display: inline-block;
+  height: 0.45rem;
+  margin-right: 0.5rem;
+  width: 0.45rem;
+}
+.audio-toggle.is-playing .audio-dot {
+  background: var(--bright_purple);
+}
+
+.hero,
+.section-grid,
+.planets-feature {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 0.8fr 1.2fr;
+  margin: auto;
+  max-width: 1050px;
+  padding: 7rem 5vw;
+}
+
+/* width and height of the main section of the page */
+.hero {
+  max-width: 1280px;
+  min-height: 650px;
+}
+
+/* fonts for the headings and subheadings across my page*/
+h1,
+h2 {
+  line-height: 0.95;
+}
+
+h1 {
+  font-size: 150px;
+}
+
+h2 {
+  font-size: 100px;
+}
+
+/* changes color of selected emphasis tags and its font */
+em {
+  color: var(--violet);
+  font-family: Iosevka, serif;
+}
+
+.hero-art {
+  min-height: 350px;
+  position: relative;
+}
+.hero-portrait {
+  height: 75%;
+  left: 17%;
+  overflow: hidden;
+  position: absolute;
+  top: 12%;
+  transform: rotate(5deg);
+  width: 63%;
+  z-index: 1;
+}
+.hero-portrait img {
+  filter: grayscale(1);
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+.orbit {
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  height: 88%;
+  position: absolute;
+  transform: rotate(-27deg);
+  width: 88%;
+}
+.orbit-two {
+  border-color: #514968;
+  height: 105%;
+  transform: rotate(40deg);
+  width: 105%;
+}
+.planet {
+  background: var(--gold);
+  border-radius: 50%;
+  height: 1rem;
+  position: absolute;
+  right: 2%;
+  top: 19%;
+  width: 1rem;
+}
+.planet-small {
+  background: var(--violet);
+  height: 0.55rem;
+  left: 4%;
+  right: auto;
+  top: 76%;
+  width: 0.55rem;
+}
+
+.planets-feature {
+  background: var(--panel);
+  max-width: none;
+  padding-left: max(5vw, calc((100% - 1050px) / 2));
+  padding-right: max(5vw, calc((100% - 1050px) / 2));
+}
+
+.planet-list article {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 2rem 1fr 1rem;
+  padding: 1rem 0;
+}
+
+.planet-number {
+  color: var(--gold);
+  font:
+    0.9rem Arial,
+    sans-serif;
+}
+
+.planet-list strong,
+.planet-list small {
+  display: block;
+}
+
+.planet-list strong {
+  font:
+    1.5rem Iosevka,
+    serif;
+}
+
+.planet-list small {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.planet-list i {
+  border: 1px solid var(--violet);
+  border-radius: 50%;
+  height: 0.6rem;
+  width: 0.6rem;
+}

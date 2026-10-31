@@ -1,0 +1,122 @@
+.hero {
+  height: 400vh;        
+  position: relative;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;}
+
+
+.stage canvas {          
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+}
+
+.planet-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 38vh;
+  transform: translateY(-50%);  
+  z-index: 1;                    
+  margin: 0;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 14vw, 10rem);
+  letter-spacing: 0.22em;
+  padding-left: 0.22em;          
+  pointer-events: none;
+  user-select: none;
+  --edge: 120%;     /* where the fade band sits; JS changes this */
+  --band: 18%;      /* how wide the soft edge is; smaller means sharper */
+
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(var(--edge) - var(--band)), transparent var(--edge));
+          mask-image: linear-gradient(to bottom, #000 calc(var(--edge) - var(--band)), transparent var(--edge));
+}
+
+.facts {
+  cursor: pointer;
+  position: absolute;
+  top: var(--nav-h);
+  bottom: 0;
+  left: 220px;               
+  right: 5vw;
+  max-width: 760px;
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     
+
+  opacity: 0;                 
+  pointer-events: none;
+}
+
+.facts:hover{
+  opacity: 0.2;
+}
+
+.facts h2 {
+  margin: 0 0 12px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  letter-spacing: 0.18em;
+}
+
+.blurb {
+  margin: 0 0 28px;
+  max-width: 60ch;
+  font-size: 1.2rem;
+  line-height: 1.45;
+  opacity: 0.8;
+}
+
+.facts dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 22px 36px;
+}
+
+.facts dt {
+  font-size: 0.95rem;
+  opacity: 0.6;
+}
+
+.facts dd {
+  margin: 2px 0 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+}
+
+
+
+
+
+
+
+navbar, .rail {
+  z-index: 9999 ; 
+  pointer-events: auto ; }
+
+
+.navbar , .rail {opacity: var(--ui,1);}
+
+
+.ui-hidden .navbar,.ui-hidden .rail {
+  pointer-events: none;       
+}
+
+.show-nav.ui-hidden .navbar { opacity: 1; pointer-events: auto; }
+.navbar { transition: opacity 0.25s; }
+
+html {
+  scroll-behavior: smooth;
+}
