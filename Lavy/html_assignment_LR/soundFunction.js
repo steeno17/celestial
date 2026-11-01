@@ -11,12 +11,10 @@ async function checkAudio() {
   if (audio.paused) {
     await audio.play();
     audioToggle.classList.add("is-playing");
-    audioToggle.setAttribute("aria-pressed", "true");
     audioToggle.lastChild.textContent = " Pause atmosphere";
   } else {
     audio.pause();
     audioToggle.classList.remove("is-playing");
-    audioToggle.setAttribute("aria-pressed", "false");
     audioToggle.lastChild.textContent = " Play atmosphere";
   }
 }

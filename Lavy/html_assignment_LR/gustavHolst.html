@@ -19,21 +19,16 @@
     </audio>
 
     <!-- takes it back to Shay's landing page -->
+    <!-- it also shares the same class as the audio button so that they have the same outline css -->
     <header class="site-header">
-      <a class="wordmark" href="../../Shay/web-src/sun.html">
+      <a class="audio-toggle" href="../../Shay/web-src/sun.html">
         <span>Home Page</span>
       </a>
 
       <!-- play music button -->
-      <!-- aria-pressed="true" plays it by default -->
-      <button
-        class="audio-toggle"
-        id="audioToggle"
-        type="button"
-        aria-pressed="false"
-      >
-        <span class="audio-dot" aria-hidden="true"></span>
-        Play atmosphere
+      <button class="audio-toggle" id="audioToggle" type="button">
+        <span class="audio-dot"></span>
+        Play Venus Bringer of Peace
       </button>
     </header>
 
@@ -50,16 +45,12 @@
           >
         </div>
         <div class="hero-art">
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
           <div class="hero-portrait">
             <img
               src="images/GustavHolstImage.jpg"
               alt="Portrait of Gustav Holst"
             />
           </div>
-          <span class="planet planet-large"></span>
-          <span class="planet planet-small"></span>
         </div>
       </section>
 
@@ -91,34 +82,40 @@
       </section>
 
       <section class="planets-feature">
-        <div class="feature-heading">
-          <h2><em>The Planets</em></h2>
-          <p>
-            A suite in seven movements, written as a series of shifting moods
-            rather than a literal tour of the solar system.
-          </p>
-        </div>
+        <h2><em>The Planets</em></h2>
+        <p>
+          A suite in seven movements, written as a series of shifting moods
+          rather than a literal tour of the solar system.
+        </p>
 
         <div class="planet-list">
           <article>
-            <span class="planet-number">I</span
-            ><span><strong>Mars</strong><small>Bringer of War</small></span>
+            <span class="planet-number">I</span>
+            <span class="planet-info"
+              ><strong>Mars</strong><small>Bringer of War</small></span
+            >
+            <audio controls src="music/mars.mp3"></audio>
           </article>
           <article>
-            <span class="planet-number">II</span
-            ><span><strong>Venus</strong><small>Bringer of Peace</small></span>
+            <span class="planet-number">II</span>
+            <span class="planet-info"
+              ><strong>Venus</strong><small>Bringer of Peace</small></span
+            >
+            <audio controls src="music/venus.mp3"></audio>
           </article>
           <article>
             <span class="planet-number">III</span>
-            <span>
+            <span class="planet-info">
               <strong>Mercury</strong><small>Winged Messenger</small>
             </span>
+            <audio controls src="music/mercury.mp3"></audio>
           </article>
           <article>
             <span class="planet-number">IV</span>
-            <span
+            <span class="planet-info"
               ><strong>Jupiter</strong><small>Bringer of Jollity</small>
             </span>
+            <audio controls src="music/jupiter.mp3"></audio>
           </article>
         </div>
       </section>
