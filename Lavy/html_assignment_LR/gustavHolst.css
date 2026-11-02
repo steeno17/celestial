@@ -20,15 +20,11 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background: var(--bg);
   color: var(--text);
   font:
-    17px/1.7 Georgia,
+    17px/1.7 Iosevka,
     serif;
   margin: 0;
 }
@@ -108,13 +104,16 @@ em {
   width: 70%;
 }
 
+
+/* limits the size of Gustav's image to fit  */
+/* so it doesnt take so much of teh screen */
 .hero-portrait img {
-  filter: grayscale(1);
   height: 100%;
   object-fit: cover;
   width: 100%;
 }
 
+/* centers the songs and the entire panel basically more in the middle */
 .planets-feature {
   background: var(--panel);
   margin: 0;
@@ -132,34 +131,32 @@ em {
 
 .planet-list article {
   align-items: center;
+  /* seperates them all by a line */
   border-bottom: 1px solid var(--line);
   display: flex;
   gap: 16px;
   padding: 16px 0;
 }
 
-.planet-number {
-  color: var(--gold);
-  font:
-    14px Arial,
-    sans-serif;
-}
-
+/* stacks the title and the small text over one another */
 .planet-list strong,
 .planet-list small {
   display: block;
 }
 
+/* this leaves a decent amount of margin space between the name of the song and the play button */
 .planet-info {
   flex: 1;
 }
 
+/* changes the font of the song titles, makes them larger of the base font, which is Iosevka */
 .planet-list strong {
   font:
     24px Iosevka,
     serif;
 }
 
+/* darker and smaller text that goes beneath the title */
 .planet-list small {
   color: var(--muted);
   font-size: 15px;
